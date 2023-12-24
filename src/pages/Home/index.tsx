@@ -1,8 +1,10 @@
 import { ButtonText } from "../../components/ButtonText";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
+import { Note } from "../../components/Note";
+import { Section } from "../../components/Section";
 import { Container, Brand, Menu, Search, Content, NewNote } from "./styles";
-import { FiPlus, FiSearch } from 'react-icons/fi'
+import { FiPlus, FiSearch } from "react-icons/fi";
 
 export function Home() {
   return (
@@ -15,7 +17,7 @@ export function Home() {
 
       <Menu>
         <li>
-          <ButtonText title="Todos" isActive/>
+          <ButtonText title="Todos" isActive />
         </li>
 
         <li>
@@ -28,10 +30,22 @@ export function Home() {
       </Menu>
 
       <Search>
-        <Input icon={FiSearch} placeholder="Pesquisar pelo título"/>
+        <Input icon={FiSearch} placeholder="Pesquisar pelo título" />
       </Search>
 
-      <Content></Content>
+      <Content>
+        <Section title="Minhas notas">
+          <Note
+            data={{
+              title: "React",
+              tags: [
+                { id: 1, name: "react" },
+                { id: 2, name: "node" },
+              ],
+            }}
+          />
+        </Section>
+      </Content>
 
       <NewNote>
         <FiPlus />
