@@ -2,16 +2,17 @@ import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from "react-icons/fi";
 import { Avatar, Container, Form } from "./styles";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function Profile() {
-  
+  const navigate = useNavigate();
+
   return (
     <Container>
       <header>
-        <Link to="/">
+        <button onClick={() => navigate(-1)}>
           <FiArrowLeft />
-        </Link>
+        </button>
       </header>
 
       <Form>
