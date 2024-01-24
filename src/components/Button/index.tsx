@@ -1,6 +1,7 @@
+import { ButtonHTMLAttributes } from "react";
 import { Container } from "./styles";
 
-interface Props extends React.HTMLAttributes<HTMLButtonElement> {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   title: string;
   isLoading?: boolean;
 }
