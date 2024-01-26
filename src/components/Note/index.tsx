@@ -1,16 +1,10 @@
+import { NotesDTO } from "../../dtos/notes.dto";
 import { Tag } from "../Tag";
 import { Container } from "./styles";
 
-interface IData {
-  title: string;
-  tags: {
-    id: number;
-    name: string;
-  }[];
-}
 
 interface Props extends React.HTMLAttributes<HTMLButtonElement> {
-  data: IData;
+  data: NotesDTO;
 }
 
 export function Note({ data, ...rest }: Props) {

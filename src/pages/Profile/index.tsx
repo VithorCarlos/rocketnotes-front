@@ -27,8 +27,8 @@ export function Profile() {
     : AvatarSvg;
 
   const [avatar, setAvatar] = useState(avatarUrl);
-  const [avatarFile, setAvatarFile] = useState(null);
-  
+  const [avatarFile, setAvatarFile] = useState();
+
   function handleChangeAvatar(event: any) {
     const file = event.target.files[0];
     setAvatarFile(file);
@@ -38,14 +38,16 @@ export function Profile() {
   }
 
   async function handleUpdate() {
-    const user = {
+    const updated = {
       name,
       email,
       old_password: oldPassword,
       password: newPassword,
     };
 
-    await updateProfile({ ...user, avatar: avatarFile });
+    const userUpdated = Object.assign(user, updated);
+
+    await updateProfile({ user: userUpdated, avatarFile });
   }
 
   return (

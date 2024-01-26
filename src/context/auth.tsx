@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../services/api";
+import { UpdateUserDTO, UserDataDTO } from "../dtos/user.dto";
 
 interface AuthContext {
   children: React.ReactNode;
@@ -10,23 +11,17 @@ interface LoginData {
   password: string;
 }
 
-interface UserData {
-  name: string;
-  email?: string;
-  avatar?: string | null;
-}
-
 interface AuthData {
   signIn: ({ email, password }: LoginData) => Promise<void>;
   signOut: () => void;
-  updateProfile: (user: UserData) => Promise<void>;
-  user: UserData;
+  updateProfile: (user: UpdateUserDTO) => Promise<void>;
+  user: UserDataDTO;
 }
 
 const AuthContext = createContext({} as AuthData);
 
 const AuthProvider = ({ children }: AuthContext) => {
-  const [data, setData] = useState({} as { user: UserData; token: string });
+  const [data, setData] = useState({} as { user: UserDataDTO; token: string });
   const USER_STORAGE = "@rocketnotes:user";
   const TOKEN_STORAGE = "@rocketnotes:token";
 
@@ -51,20 +46,20 @@ const AuthProvider = ({ children }: AuthContext) => {
   function signOut() {
     localStorage.removeItem(USER_STORAGE);
     localStorage.removeItem(TOKEN_STORAGE);
-    setData({} as { user: UserData; token: string });
+    setData({} as { user: UserDataDTO; token: string });
   }
 
-  async function updateProfile(user: UserData) {
+  async function updateProfile({ user, avatarFile }: UpdateUserDTO) {
     try {
-      if (user.avatar) {
+      if (avatarFile) {
         const fileUpload = new FormData();
-        fileUpload.append("avatar", user.avatar);
+        fileUpload.append("avatar", avatarFile);
 
         const response = await api.patch("/users/avatar", fileUpload);
         user.avatar = response.data.avatar;
       }
       await api.put("/users", user);
-      
+
       localStorage.setItem(USER_STORAGE, JSON.stringify(user));
 
       setData({ user, token: data.token });
