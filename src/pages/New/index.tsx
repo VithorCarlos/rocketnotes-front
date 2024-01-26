@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
@@ -8,6 +9,34 @@ import { Container, Form } from "./styles";
 import { Link } from "react-router-dom";
 
 export function New() {
+  const [links, setLinks] = useState<string[]>([]);
+  const [newLink, setNewLink] = useState("");
+
+  const [tags, setTags] = useState<string[]>([]);
+  const [newTag, setNewTag] = useState("");
+
+  function handleAddLink() {
+    if (!!newLink) {
+      setLinks((prevState) => [...prevState, newLink]);
+      setNewLink("");
+    }
+  }
+
+  function handleAddTag() {
+    if (!!newTag) {
+      setTags((prevState) => [...prevState, newTag]);
+      setNewTag("");
+    }
+  }
+
+  function handleRemoveLink(linkTodelete: string) {
+    setLinks((prevState) => prevState.filter((link) => link !== linkTodelete));
+  }
+
+  function handleRemoveTag(tagTodelete: string) {
+    setTags((prevState) => prevState.filter((tag) => tag !== tagTodelete));
+  }
+
   return (
     <Container>
       <Header />
@@ -20,21 +49,47 @@ export function New() {
 
           <Input placeholder="Título" />
 
-          <TextArea placeholder="Observações" value="" />
+          <TextArea placeholder="Observações" defaultValue={""} />
 
           <Section title="Links úteis">
-            <NoteItem value="https://google.com" onClick={() => {}} />
-            <NoteItem isNew placeholder="Novo link" onClick={() => {}} />
+            <NoteItem
+              isNew
+              value={newLink}
+              placeholder="Novo link"
+              onChange={(event) => setNewLink(event.target.value)}
+              onClick={handleAddLink}
+            />
+
+            {links?.map((link, index) => (
+              <NoteItem
+                key={String(index)}
+                value={link}
+                onClick={() => handleRemoveLink(link)}
+              />
+            ))}
           </Section>
 
           <Section title="Marcadores">
             <div className="tags">
-              <NoteItem value="react" onClick={() => {}} />
-              <NoteItem isNew placeholder="Novo marcador" onClick={() => {}} />
+              <NoteItem
+                isNew
+                placeholder="Novo marcador"
+                onChange={(event) => setNewTag(event.target.value)}
+                onClick={handleAddTag}
+                value={newTag}
+              />
+
+              {tags?.map((tag, index) => (
+                <NoteItem
+                  key={String(index)}
+                  value={tag}
+                  onClick={() => handleRemoveTag(tag)}
+                />
+              ))}
             </div>
           </Section>
 
-          <Button title="Salvar"/>
+          <Button title="Salvar" />
         </Form>
       </main>
     </Container>

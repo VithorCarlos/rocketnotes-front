@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
 interface Props {
-  isNew?: boolean;
+  $isNew?: boolean;
 }
 
 export const Container = styled.div<Props>`
   display: flex;
   align-items: center;
   
-  background-color: ${({ theme, isNew }) =>
-    isNew ? "transparent" : theme.COLORS.BACKGROUND_900};
+  background-color: ${({ theme, $isNew }) =>
+    $isNew ? "transparent" : theme.COLORS.BACKGROUND_900};
   color: ${({ theme }) => theme.COLORS.GRAY_300};
-  border: ${({ theme, isNew }) =>
-    isNew ? `1px dashed ${theme.COLORS.GRAY_300}` : "none"};
+  border: ${({ theme, $isNew }) =>
+    $isNew ? `1px dashed ${theme.COLORS.GRAY_300}` : "none"};
 
   padding: 0 2rem;
   border-radius: 10px;
@@ -38,7 +38,7 @@ export const Container = styled.div<Props>`
     border: none;
     background: none;
     font-size: 2.4rem;
-    color: ${({ theme, isNew }) =>
-      isNew ? theme.COLORS.ORANGE : theme.COLORS.RED};
+    color: ${({ theme, $isNew }) =>
+      $isNew ? theme.COLORS.ORANGE : theme.COLORS.RED};
   }
 `;

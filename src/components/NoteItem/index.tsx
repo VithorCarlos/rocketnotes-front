@@ -10,7 +10,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 export function NoteItem({ isNew, value, onClick, ...rest }: Props) {
   return (
-    <Container {...{ isNew }}>
+    <Container $isNew={isNew}>
       <input type="text" {...{ value, ...rest }} readOnly={!isNew} />
 
       <button type="button" {...{ onClick }}>
