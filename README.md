@@ -1,30 +1,60 @@
-# React + TypeScript + Vite
+# Rocketnotes
+Application developed to manage user notes.
+The system offers several functionalities that allow the user to register, update and filter notes, link useful links, create tags, with each tag being associated with a specific note.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+|         Thumb         | 
+|:----------------------:| 
+|<img src="https://github.com/VithorCarlos/rocketnotes-front/assets/44248390/5f252a05-ce15-4030-a8b7-1bb86be7d2b6" width="1280" />| 
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Features
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+✔️ Account creation;
 
-- Configure the top-level `parserOptions` property like this:
+✔️ User validation;
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+✔️ JWT Authentication;
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+✔️ User Login;
+
+✔️ Integration with Backend API made in Node.js;
+
+✔️ Filter by tags;
+
+✔️ Search;
+
+✔️ Note creation;
+
+✔️ Tag creation;
+
+✔️ Link building;
+
+✔️ Editing the entire flow of notes;
+
+✔️ Deletion of the entire flow of notes;
+
+✔️ User Update;
+
+✔️ Avatar Upload;
+
+
+## 🖥️ Technologies
+
+
+
+✔️ React.js;
+
+✔️ Context API;
+
+✔️ Axios;
+
+✔️ JWT;
+
+✔️ HTML;
+
+✔️ CSS3;
+
+✔️ Javascript/Typescript;
+
+✔️ Node.js;
